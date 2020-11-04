@@ -10,15 +10,24 @@
     "nodecli-template": "index.js",
     "clistart": "index.js"
   },
-  "keywords": ["nodejscli", "templatecli", "template", "starter template", "cli", "cli starter template" ],
+  "keywords": [
+    "nodejscli",
+    "templatecli",
+    "template",
+    "starter template",
+    "cli",
+    "cli starter template"
+  ],
   "author": {
     "name": "Paras Arora",
     "email": "paras.arora0025@gmail.com",
     "url": "https://twitter.com/paras0025"
   },
   "license": "MIT",
-
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "copy-template-dir": "^1.4.0"
   }
 }
