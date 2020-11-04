@@ -1,1 +1,0 @@
-// thhis is file dynamically made called {{name}}.js
