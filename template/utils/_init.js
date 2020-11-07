@@ -1,29 +1,29 @@
 const welcome= require('cli-welcome')
-const pkgJSON= require('./../package.json')
-const checkVersion= require('node-vercheck')
+const checkNode= require('node-vercheck')
 const unhandled= require('unhandle-error')
+const pkgJSON= require('./../package.json')
 
-module.exports= ()=>{
+module.exports= (flags)=>{
     process.on('SIGINT',function () {
         console.log("Sad!! You closed the process in between.....!!")
         console.log("Any Problem/query? Give feedback at https://www.domainname.tld")
     })
     
     unhandled()
+
+    let clear= flags.clear
     
-    welcome({
-        title: "Create-nodejs-cli",
-        tagLine: `run \`npx clistart\` to create a cli template in the same current folder\nBy Paras Arora`,
+    !flags.minimal && welcome({
+        title: "paras007",
+        tagLine: "run `npx paras007` to get know about me",
         bgColor: `#708090`,
         color: `#000000`,
         bold: true,
-        clear: true,
+        clear,
         version: `${pkgJSON.version}`,
         description: pkgJSON.description
     })
-    
-    checkVersion(10,{
-        exit: true
-    })
 
+    checkNode('10')
+   
 }
