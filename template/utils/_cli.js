@@ -4,7 +4,8 @@ const chalk = require('chalk')
 
 const helptext= `
 Usage
-${green('npx paras007')} ${cyan('[--options]')} ${yellow('<input>')}
+${green('npx {{name}}')} ${cyan('[--options]')} ${yellow('<input>')}
+${green('npx {{command}}')} ${cyan('[--options]')} ${yellow('<input>')}
 
 Flags/Options + alias                          ${chalk.dim('Defaults')}
 ${cyan('--debug')},${cyan(' -d')}       : to debug the cli             ${chalk.dim('false')}
@@ -39,7 +40,7 @@ const options= {
         },
         clear: {
             type: 'boolean',
-            // default: 'false',
+            default: 'false',
             alias: 'c'
         }
     }

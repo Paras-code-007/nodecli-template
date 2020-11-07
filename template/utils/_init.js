@@ -14,8 +14,8 @@ module.exports= (flags)=>{
     let clear= flags.clear
     
     !flags.minimal && welcome({
-        title: "paras007",
-        tagLine: "run `npx paras007` to get know about me",
+        title: "{{name}}",
+        tagLine: "By {{authorName}}",
         bgColor: `#708090`,
         color: `#000000`,
         bold: true,
@@ -23,6 +23,9 @@ module.exports= (flags)=>{
         version: `${pkgJSON.version}`,
         description: pkgJSON.description
     })
+
+    flags.minimal && flags.clear && process.stdout.write(process.platform==='win32'? '\x1B[2J\x1B[0f' : '\x1B[2J\x1B[3J\x1B[H' )
+    flags.minimal && console.log(`\nBy {{authorName}}\n`)
 
     checkNode('10')
    

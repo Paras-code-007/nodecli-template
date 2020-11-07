@@ -3,6 +3,7 @@
 /*
 * {{name}}
 * {{description}}
+* @author {{authorName}} <{{authorUrl}}>
 */
 
 const init = require('./utils/init')
@@ -13,6 +14,7 @@ const debug= require('./utils/debug')
     
     init(cli.flags)
     // cli.input. and cli.flags.
+    cli.input.includes('help') && cli.showHelp(0)
     debug(cli.flags.debug, cli.flags, cli.input)
 
 })()
