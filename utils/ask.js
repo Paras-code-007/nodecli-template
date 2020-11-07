@@ -12,7 +12,7 @@ module.exports= async ({message, hint, initial})=>{
         hint,
         initial
     }).run())  //input function will create a run property inside the object made by new and when run is called it returns a promise which on resolve passes the arguement passed by the user or userinput
-    
+
     // console.log(name)
     // handleError('INPUT',err);
 
