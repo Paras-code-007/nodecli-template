@@ -6,6 +6,11 @@
         "{{name}}": "index.js",
         "{{command}}": "index.js"
     },
+    "main": "index.js",
+    "files": [
+        "index.js",
+        "utils"
+    ],
     "author": {
         "name": "{{authorName}}",
         "email": "{{authorEmail}}",
