@@ -7,23 +7,14 @@ const ask= require('./utils/ask.js')
 
 ;(async ()=>{
     init()
-<<<<<<< HEAD
-    
-    const name= await ask({message: 'CLI name? ', hint: 'Use-kebab-case'})
-    const description= await ask({message: 'CLI description? '})
-    
-    const vars= {
-        name,
-        description,
-=======
 
-    const name= ask({message: 'CLI name? ', hint: 'Kebab-case-only'})
-    const description= ask({message: 'CLI description? '})
-    const version= ask({message: 'CLI version? ', hint: 'Use Semantic versioning',initial: '0.0.1'})
-    const license= ask({message: 'CLI license? ',initial: 'UNLICENSED'})
-    const authorName= ask({message: 'Author name? '})
-    const authorEmail= ask({message: 'Author email? '})
-    const authorUrl= ask({message: 'Author url? '})
+    const name= await ask({message: 'CLI name? ', hint: 'Kebab-case-only'})
+    const description= await ask({message: 'CLI description? '})
+    const version= await ask({message: 'CLI version? ', hint: 'Use Semantic versioning',initial: '0.0.1'})
+    const license= await ask({message: 'CLI license? ',initial: 'UNLICENSED'})
+    const authorName= await ask({message: 'Author name? '})
+    const authorEmail= await ask({message: 'Author email? '})
+    const authorUrl= await ask({message: 'Author url? '})
 
     const vars= {
         name,
@@ -33,7 +24,6 @@ const ask= require('./utils/ask.js')
         authorEmail,
         authorUrl,
         license
->>>>>>> trial-refactoring
     }
     
     const inDir= path.join(__dirname, "template")
