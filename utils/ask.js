@@ -20,15 +20,6 @@ module.exports= async ({message, hint, initial})=>{
 }
 
 
-
-
-
-
-
-
-
-
-
 // (async ()=>{
 
 // const [err,name]= await to(new Input({
