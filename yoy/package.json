@@ -1,0 +1,8 @@
+{
+    "name": "yoy",
+    "description": "CLI to resize and optimise images",
+    "version": "0.0.1",
+    "bin": {
+        "yoy": "index.js"
+    }
+}   

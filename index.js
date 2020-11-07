@@ -3,22 +3,17 @@
 const copy= require('copy-template-dir')
 const path= require('path')
 const init= require('./utils/init')
-const { Input }= require('enquirer')
-const to= require('await-to-js').default
-const handleError= require('cli-display-error')
+const ask= require('./utils/ask.js')
 
 ;(async ()=>{
     init()
-
-    const [err,name]= await to(new Input({
-        message: 'Enter name of the cli: ',
-        hint: 'Use kebab case'
-    }).run())  //input function will create a run property inside the object made by new and when run is called it returns a promise which on resolve passes the arguement passed by the user or userinput
-    handleError('INPUT',err);
+    
+    const name= await ask({message: 'CLI name? ', hint: 'Use-kebab-case'})
+    const description= await ask({message: 'CLI description? '})
     
     const vars= {
         name,
-        description: 'CLI to resize and optimise images',
+        description,
     }
     
     const inDir= path.join(__dirname, "template")
