@@ -1,8 +1,14 @@
 {
     "name": "{{name}}",
     "description": "{{description}}",
-    "version": "0.0.1",
+    "version": "{{version}}",
     "bin": {
         "{{name}}": "index.js"
-    }
+    },
+    "author": {
+        "name": "{{authorName}}",
+        "email": "{{authorEmail}}",
+        "url": "{{authorUrl}}"
+    },
+    "license": "{{license}}"
 }   
