@@ -1,8 +1,13 @@
 const ask= require('./ask')
+const alert= require('clialerting')
 
 module.exports= async()=>{
 
     const name= await ask({message: 'CLI name? ', hint: 'Kebab-case-only'})
+    if(!name){
+        alert({type: 'error', msg: "Empty feild"})
+        process.exit(0)
+    }
     const description= await ask({message: 'CLI description? '})
     const version= await ask({message: 'CLI version? ', hint: 'Use Semantic versioning',initial: '0.0.1'})
     const license= await ask({message: 'CLI license? ',initial: 'UNLICENSED'})
