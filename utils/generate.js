@@ -2,14 +2,14 @@ const copy= require('copy-template-dir')
 const path= require('path')
 const {green: g, dim: d}= require('chalk')
 const alert= require('clialerting')
-const questions= require('./utils/questions')
+const questions= require('./questions')
 
 module.exports= async ()=>{
     
     const vars= await questions()
     // console.log(vars) //receives Promise { <pending> }  //use in debug options
     const outDir= vars.name
-    const inDirPath= path.join(__dirname, "template")
+    const inDirPath= path.join(__dirname, "./../template")
     const outDirPath= path.join(process.cwd(), outDir)  //_dirname can be there? or not
 
     outDir && copy(inDirPath, outDirPath, vars, (err, createdFiles) => {
