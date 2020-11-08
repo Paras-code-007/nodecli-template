@@ -1,5 +1,5 @@
 {
-  "name": "nodecli-template",
+  "name": "cli-up",
   "version": "1.0.0",
   "description": "Create a starter template for building nodejs cli",
   "main": "index.js",
@@ -9,8 +9,9 @@
     "template"
   ],
   "bin": {
-    "nodecli-template": "index.js",
-    "clistart": "index.js"
+    "cli-up": "index.js",
+    "clistart": "index.js",
+    "cliup": "index.js"
   },
   "keywords": [
     "nodejscli",

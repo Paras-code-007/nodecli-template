@@ -4,7 +4,7 @@ const chalk = require('chalk')
 
 const helptext= `
 Usage
-${green('npx nodecli-template')} ${cyan('[--options]')} ${yellow('<input>')}
+${green('npx cli-up/cliup')} ${cyan('[--options]')} ${yellow('<input>')}
 ${green('npx clistart')} ${cyan('[--options]')} ${yellow('<input>')}
 
 Flags/Options + alias                          ${chalk.dim('Defaults')}
