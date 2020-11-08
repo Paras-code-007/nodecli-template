@@ -1,6 +1,7 @@
 const { Input }= require('enquirer')
 const to= require('await-to-js').default
 const handleError= require('cli-display-error')
+const {magenta}= require('chalk')
 
 module.exports= async ({message, hint, initial})=>{
     
@@ -16,7 +17,7 @@ module.exports= async ({message, hint, initial})=>{
         }
     })
     .on('cancel', ()=> {
-        console.log('〉Cancelled')
+        console.log(magenta.bold('❯ Cancelled'))
         process.exit(0)
     } ) //exit with error code 0
     .run())  //input function will create a run property inside the object made by new and when run is called it returns a promise which on resolve passes the arguement passed by the user or userinput

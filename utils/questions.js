@@ -11,7 +11,7 @@ module.exports= async()=>{
     const description= await ask({message: 'CLI description? '})
     const version= await ask({message: 'CLI version? ', hint: 'Use Semantic versioning',initial: '0.0.1'})
     const license= await ask({message: 'CLI license? ',initial: 'UNLICENSED'})
-    const command= await ask({message: 'CLI command? ',hint: 'Optional: Add if differrent from the cli name'})
+    const command= await ask({message: 'CLI command? ',hint: 'Optional: Add if differrent from the cli name', initial: name})
     const authorName= await ask({message: 'Author name? '})
     const authorEmail= await ask({message: 'Author email? '})
     const authorUrl= await ask({message: 'Author url? '})

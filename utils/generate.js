@@ -3,6 +3,7 @@ const path= require('path')
 const {green: g, dim: d}= require('chalk')
 const alert= require('clialerting')
 const questions= require('./questions')
+const execa= require('execa')
 
 module.exports= async ()=>{
     
@@ -11,8 +12,9 @@ module.exports= async ()=>{
     const outDir= vars.name
     const inDirPath= path.join(__dirname, "./../template")
     const outDirPath= path.join(process.cwd(), outDir)  //_dirname can be there? or not
+    // console.log(outDirPath)
 
-    outDir && copy(inDirPath, outDirPath, vars, (err, createdFiles) => {
+    outDir && copy(inDirPath, outDirPath, vars, async (err, createdFiles) => {
         if (err) throw err  //dipslay err and exit 
         console.log()
         console.log(d(`\nCreating files in ${g(`./${outDir}`)}`))
@@ -24,6 +26,12 @@ module.exports= async ()=>{
         })
 
         alert({type: 'success', msg: `\n\n${createdFiles.length} were created in ${d(`./${outDir}`)} directory`, name: 'All Done'})
+
+        process.chdir(outDirPath)
+        await execa(`npm`, ['dedupe'])
+        await execa('npx', ['conduct'])
+        // await execa('npx', ['license','-n',vars.authorName,'-e',vars.authorEmail, vars.license])
+        // process.chdir(path.join(process.cwd(), '../'))
     })
     !outDir && console.log('You forgot to Enter the cli name which is most cumpolsary for this cli to work')
 
