@@ -12,7 +12,7 @@ const debug= require('./utils/debug')
     const vars=await generate()  //returns a pending promis therfore awaited it 
     const userinputs= {...vars}
     
-    process.on('exit',function (exitStatus) {
+    cli.flags.debug && process.on('exit',function (exitStatus) {
         console.log('exit code:', exitStatus)
         debug(cli.flags.debug, cli.flags, cli.input, userinputs)
     })
