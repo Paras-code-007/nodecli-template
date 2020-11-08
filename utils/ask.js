@@ -10,7 +10,10 @@ module.exports= async ({message, hint, initial})=>{
     const [err,name]= await to(new Input({
         message,
         hint,
-        initial
+        initial,
+        validate(value){ //which is the value enetered by user
+            return !value? "Please add value" : true
+        }
     }).run())  //input function will create a run property inside the object made by new and when run is called it returns a promise which on resolve passes the arguement passed by the user or userinput
 
     // console.log(name)
