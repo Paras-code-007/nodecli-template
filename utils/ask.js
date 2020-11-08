@@ -3,16 +3,20 @@ const to= require('await-to-js').default
 const handleError= require('cli-display-error')
 const {magenta}= require('chalk')
 
-module.exports= async ({message, hint, initial})=>{
+module.exports= async ({message, hint, initial, name})=>{
     
     // console.log(message)
     // console.log(hint)
     // console.log(initial)
-    const [err,name]= await to(new Input({
+    const [err,response]= await to(new Input({
+        name,
         message,
         hint,
         initial,
-        validate(value){ //which is the value enetered by user
+        validate(value,state){ //which is the value enetered by user
+            if(state && state.name === 'description') return true
+            if(state && state.name === 'authorEmail') return true
+            if(state && state.name === 'authorUrl') return true
             return !value? "Please add value" : true
         }
     })
@@ -25,7 +29,7 @@ module.exports= async ({message, hint, initial})=>{
     // console.log(name)
     // handleError('INPUT',err);
 
-    return name
+    return response
 }
 
 

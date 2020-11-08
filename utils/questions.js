@@ -8,13 +8,13 @@ module.exports= async()=>{
         alert({type: 'error', msg: "Empty feild"})
         process.exit(0)
     }
-    const description= await ask({message: 'CLI description? '})
-    const version= await ask({message: 'CLI version? ', hint: 'Use Semantic versioning',initial: '0.0.1'})
-    const license= await ask({message: 'CLI license? ',initial: 'UNLICENSED'})
-    const command= await ask({message: 'CLI command? ',hint: 'Optional: Add if differrent from the cli name', initial: name})
-    const authorName= await ask({message: 'Author name? '})
-    const authorEmail= await ask({message: 'Author email? '})
-    const authorUrl= await ask({message: 'Author url? '})
+    const description= await ask({name: 'description',message: 'CLI description? ', hint: '(Optional)'})
+    const version= await ask({name: 'version',message: 'CLI version? ', hint: 'Use Semantic versioning',initial: '0.0.1'})
+    const license= await ask({name: 'license',message: 'CLI license? ',initial: 'UNLICENSED'})
+    const command= await ask({name: 'command',message: 'CLI command? ',hint: 'Optional: Add if differrent from the cli name', initial: name})
+    const authorName= await ask({name: 'authorName',message: 'Author name? '})
+    const authorEmail= await ask({name: 'authorEmail',message: 'Author email? ', hint: '(Optional)'})
+    const authorUrl= await ask({name: 'authorUrl',message: 'Author url?', hint: '(Optional)'})
     
     const vars= {
         name,
