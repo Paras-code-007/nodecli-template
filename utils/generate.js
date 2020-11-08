@@ -3,8 +3,9 @@ const path= require('path')
 const {green: g, dim: d}= require('chalk')
 const alert= require('clialerting')
 const questions= require('./questions')
+const debug= require('./debug')
 
-module.exports= async ()=>{
+module.exports= async (cli)=>{
     
     const vars= await questions()
     // console.log(vars) //receives Promise { <pending> }  //use in debug options
@@ -24,6 +25,7 @@ module.exports= async ()=>{
         })
 
         alert({type: 'success', msg: `\n\n${createdFiles.length} were created in ${d(`./${outDir}`)} directory`, name: 'All Done'})
+        debug(cli.flags.debug, cli.flags, cli.input, vars)  //since this cb is executed at the last of process and we need that at end of process debug should be displayed
     })
     !outDir && console.log('You forgot to Enter the cli name which is most cumpolsary for this cli to work')
 
