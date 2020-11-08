@@ -10,7 +10,7 @@ const questions= require('./utils/questions')
 ;(async ()=>{
     init()
     
-    const vars= questions()
+    const vars= await questions()
     console.log(vars) //receives Promise { <pending> }
     const outDir= vars.name
     const inDirPath= path.join(__dirname, "template")
