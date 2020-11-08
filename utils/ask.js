@@ -14,7 +14,12 @@ module.exports= async ({message, hint, initial})=>{
         validate(value){ //which is the value enetered by user
             return !value? "Please add value" : true
         }
-    }).run())  //input function will create a run property inside the object made by new and when run is called it returns a promise which on resolve passes the arguement passed by the user or userinput
+    })
+    .on('cancel', ()=> {
+        console.log('〉Cancelled')
+        process.exit(0)
+    } ) //exit with error code 0
+    .run())  //input function will create a run property inside the object made by new and when run is called it returns a promise which on resolve passes the arguement passed by the user or userinput
 
     // console.log(name)
     // handleError('INPUT',err);
