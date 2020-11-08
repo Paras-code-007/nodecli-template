@@ -3,32 +3,14 @@
 const copy= require('copy-template-dir')
 const path= require('path')
 const init= require('./utils/init')
-const ask= require('./utils/ask.js')
 const {green: g, dim: d}= require('chalk')
 const alert= require('clialerting')
 
 ;(async ()=>{
     init()
-
-    const name= await ask({message: 'CLI name? ', hint: 'Kebab-case-only'})
-    const description= await ask({message: 'CLI description? '})
-    const version= await ask({message: 'CLI version? ', hint: 'Use Semantic versioning',initial: '0.0.1'})
-    const license= await ask({message: 'CLI license? ',initial: 'UNLICENSED'})
-    const command= await ask({message: 'CLI command? ',hint: 'Optional: Add if differrent from the cli name'})
-    const authorName= await ask({message: 'Author name? '})
-    const authorEmail= await ask({message: 'Author email? '})
-    const authorUrl= await ask({message: 'Author url? '})
-
-    const vars= {
-        name,
-        description,
-        version,
-        license,
-        command: command? command : name,
-        authorName,
-        authorEmail,
-        authorUrl
-    }
+    
+    const vars= require('./utils/questions')
+    console.log(vars) //receives undefined here
     const outDir= vars.name
     const inDirPath= path.join(__dirname, "template")
     const outDirPath= path.join(process.cwd(), outDir)  //_dirname can be there? or not
