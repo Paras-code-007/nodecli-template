@@ -23,4 +23,5 @@ const vars= {
 }
 
 module.exports= vars
+//exports statemnt does not work in local scope 
 })()
