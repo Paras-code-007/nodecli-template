@@ -5,12 +5,13 @@ const path= require('path')
 const init= require('./utils/init')
 const {green: g, dim: d}= require('chalk')
 const alert= require('clialerting')
+const questions= require('./utils/questions')
 
 ;(async ()=>{
     init()
     
-    const vars= await require('./utils/questions')
-    console.log(vars) //receives undefined here
+    const vars= questions()
+    console.log(vars) //receives Promise { <pending> }
     const outDir= vars.name
     const inDirPath= path.join(__dirname, "template")
     const outDirPath= path.join(process.cwd(), outDir)  //_dirname can be there? or not
