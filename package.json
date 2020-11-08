@@ -41,6 +41,7 @@
     "execa": "^4.1.0",
     "meow": "^8.0.0",
     "node-vercheck": "^1.0.1",
+    "ora": "^5.1.0",
     "unhandle-error": "^0.1.0"
   }
 }

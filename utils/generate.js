@@ -1,9 +1,12 @@
 const copy= require('copy-template-dir')
 const path= require('path')
-const {green: g, dim: d}= require('chalk')
+const {green: g, dim: d, yellow: y}= require('chalk')
 const alert= require('clialerting')
 const questions= require('./questions')
 const execa= require('execa')
+const ora= require('ora')
+
+const spinner= ora({text: ''})
 
 module.exports= async ()=>{
     
@@ -25,13 +28,28 @@ module.exports= async ()=>{
             console.log(`${g('CREATED')} ${fileName}`)
         })
 
-        alert({type: 'success', msg: `\n\n${createdFiles.length} were created in ${d(`./${outDir}`)} directory`, name: 'All Done'})
+        alert({type: 'success', msg: `\n\n${createdFiles.length} files were created in ${d(`./${outDir}`)} directory`, name: 'All Done'})
 
+        spinner.start(`${y('npm dedupe')} running...`)
         process.chdir(outDirPath)
         await execa(`npm`, ['dedupe'])
+        spinner.succeed(`${g('npm dedupe')} ran succesfully\n`)
+        spinner.start(`${y('npx conduct')} running...`)
         await execa('npx', ['conduct'])
+        spinner.succeed(`${g('npx conduct')} ran succesfully: ${g('Added')} code-of-conduct.md\n`)
         // await execa('npx', ['license','-n',vars.authorName,'-e',vars.authorEmail, vars.license])
         // process.chdir(path.join(process.cwd(), '../'))
+        const packages= [
+            'meow',
+            'chalk',
+            'clialerting',
+            'cli-welcome',
+            'node-vercheck',
+            'unhandle-error'
+        ]
+        spinner.start(`${y('Dependencies')} installing...\n\n ${d('It may take a moment')}`)
+        // await execa('npm', ['install', ...packages, '--save'])
+        spinner.succeed(`${g('Dependencies')} installed!!`)
     })
     !outDir && console.log('You forgot to Enter the cli name which is most cumpolsary for this cli to work')
 
