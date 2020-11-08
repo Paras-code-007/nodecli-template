@@ -37,6 +37,7 @@
     "clialerting": "^1.0.1",
     "copy-template-dir": "^1.4.0",
     "enquirer": "^2.3.6",
+    "meow": "^8.0.0",
     "node-vercheck": "^1.0.1",
     "unhandle-error": "^0.1.0"
   }
