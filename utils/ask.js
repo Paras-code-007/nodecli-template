@@ -1,3 +1,4 @@
+const fs= require('fs')
 const { Input }= require('enquirer')
 const to= require('await-to-js').default
 const handleError= require('cli-display-error')
@@ -14,6 +15,13 @@ module.exports= async ({message, hint, initial, name})=>{
         hint,
         initial,
         validate(value,state){ //which is the value enetered by user
+            if(state && state.name === 'name'){
+                if(fs.existsSync(value)){
+                    return `Directory already exists: ./${value}`  //give error 
+                }else{
+                    return true  //validated and move fwd
+                }
+            }
             if(state && state.name === 'description') return true
             if(state && state.name === 'authorEmail') return true
             if(state && state.name === 'authorUrl') return true

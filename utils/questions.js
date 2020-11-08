@@ -3,7 +3,7 @@ const alert= require('clialerting')
 
 module.exports= async()=>{
 
-    const name= await ask({message: 'CLI name? ', hint: 'Kebab-case-only'})
+    const name= await ask({name: 'name', message: 'CLI name? ', hint: 'Kebab-case-only'})
     if(!name){
         alert({type: 'error', msg: "Empty feild"})
         process.exit(0)
