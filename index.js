@@ -9,7 +9,7 @@ const alert= require('clialerting')
 ;(async ()=>{
     init()
     
-    const vars= require('./utils/questions')
+    const vars= await require('./utils/questions')
     console.log(vars) //receives undefined here
     const outDir= vars.name
     const inDirPath= path.join(__dirname, "template")

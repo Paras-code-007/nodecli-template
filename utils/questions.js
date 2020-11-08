@@ -1,5 +1,5 @@
 const ask= require('./ask')
-
+let vars= {}
 ;(async()=>{
 
 const name= await ask({message: 'CLI name? ', hint: 'Kebab-case-only'})
@@ -11,17 +11,28 @@ const authorName= await ask({message: 'Author name? '})
 const authorEmail= await ask({message: 'Author email? '})
 const authorUrl= await ask({message: 'Author url? '})
 
-const vars= {
-    name,
-    description,
-    version,
-    license,
-    command: command? command : name,
-    authorName,
-    authorEmail,
-    authorUrl
-}
+// const vars= {
+//     name,
+//     description,
+//     version,
+//     license,
+//     command: command? command : name,
+//     authorName,
+//     authorEmail,
+//     authorUrl
+// }
+
+vars.name= name
+vars.description= description
+vars.version= version
+vars.license= license
+vars.command= command
+vars.authorName= authorName
+vars.authorEmail= authorEmail
+vars.authorUrl= authorUrl
+
+
+})()
 
 module.exports= vars
 //exports statemnt does not work in local scope 
-})()
