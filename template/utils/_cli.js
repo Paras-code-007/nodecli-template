@@ -40,7 +40,7 @@ const options= {
         },
         clear: {
             type: 'boolean',
-            default: 'false',
+            default: false,
             alias: 'c'
         }
     }
