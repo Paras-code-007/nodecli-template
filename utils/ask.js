@@ -11,15 +11,21 @@ module.exports= async ({message, hint, initial, name})=>{
     // console.log(message)
     // console.log(hint)
     // console.log(initial)
+
+    let history =false
+
+    if(!initial && name !== 'name' && name !== 'command' && name !== 'description'){
+        history= {
+            autosave: true,
+            store: new Store({path: path.join(__dirname, `./../.history/${name}.json`)})  
+        }
+    }
     const [err,response]= await to(new Input({
         name,
         message,
         hint,
         initial,
-        history: {
-            autosave: true,
-            store: new Store({path: path.join(__dirname, `./../.history/${name}.json`)})  
-        },
+        history,
         validate(value,state){ //which is the value enetered by user
             if(state && state.name === 'name'){
                 if(fs.existsSync(value)){
