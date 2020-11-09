@@ -12,14 +12,7 @@ module.exports= async ({name, message, hint})=>{
         message,
         limit: 5,
         choices,
-        hint,
-        // history: {
-        //     autosave: true,
-        //     store: new Store({path: path.join(__dirname, `./../.history/${name}.json`)})  
-        // } //!not working
-        // validate(value,state){
-        //     return !value? "Please add value" : true
-        // } //!not working
+        hint
     })
     .on('cancel', ()=> {
         console.log(magenta.bold('❯ Cancelled'))
