@@ -20,6 +20,9 @@
         "email": "{{authorEmail}}",
         "url": "{{authorUrl}}"
     },
+    "engines": {
+        "node": ">=10"
+    },    
     "license": "{{license}}",
     "scripts": {
         "test": "node test.js && echo \"Error: no test specified\" && exit 1",
