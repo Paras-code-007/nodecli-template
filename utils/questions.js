@@ -1,4 +1,5 @@
 const ask= require('./ask')
+const autocompPrompt= require('./autocomplete')
 const alert= require('clialerting')
 
 module.exports= async()=>{
@@ -10,7 +11,8 @@ module.exports= async()=>{
     }
     const description= await ask({name: 'description',message: 'CLI description? ', hint: '(Optional)'})
     const version= await ask({name: 'version',message: 'CLI version? ', hint: 'Use Semantic versioning',initial: '0.0.1'})
-    const license= await ask({name: 'license',message: 'CLI license? ',initial: 'UNLICENSED'})
+    // const license= await ask({name: 'license',message: 'CLI license? ',initial: 'UNLICENSED'})
+    const license= await autocompPrompt({name: 'license',message: 'CLI license? '})
     const command= await ask({name: 'command',message: 'CLI command? ',hint: 'Optional: Add if differrent from the cli name', initial: name})
     const authorName= await ask({name: 'authorName',message: 'Author name? '})
     const authorEmail= await ask({name: 'authorEmail',message: 'Author email? ', hint: '(Optional)'})

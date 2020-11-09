@@ -35,10 +35,14 @@ module.exports= async ()=>{
         await execa(`npm`, ['dedupe'])
         spinner.succeed(`${g('npm dedupe')} ran succesfully\n`)
         spinner.start(`${y('npx conduct')} running...`)
-        await execa('npx', ['conduct'])
+        // await execa('npx', ['conduct'])
         spinner.succeed(`${g('npx conduct')} ran succesfully: ${g('Added')} code-of-conduct.md\n`)
-        // await execa('npx', ['license','-n',vars.authorName,'-e',vars.authorEmail, vars.license])
+        
+        spinner.start(`${y(`npx license ${vars.license}`)} running...`)
+        await execa('npx', ['license',vars.license,'-n',vars.authorName.split(" ").join(""),'-e',vars.authorEmail])
         // process.chdir(path.join(process.cwd(), '../'))
+        spinner.succeed(`${g(`npx license ${vars.license}`)} ran succesfully: ${g('Added')} LICENSE\n`)
+
         const packages= [
             'meow',
             'chalk',
