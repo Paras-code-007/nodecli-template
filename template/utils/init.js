@@ -6,7 +6,7 @@ const pkgJSON= require('./../package.json')
 module.exports= (flags)=>{
     process.on('SIGINT',function () {
         console.log("\n\nSad!! You closed the process in between.....!!")
-        console.log("Any Problem/query? Give feedback at https://www.domainname.tld")
+        console.log("Any Problem/query? Give feedback at https://www.domainname.tld\n")
     })
     
     unhandled()

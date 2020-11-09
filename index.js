@@ -18,3 +18,8 @@ const debug= require('./utils/debug')
     })
 
 })()
+
+//fixed the non occurence of _.gitignore and _todos.md files when package was installed and run using npx 
+// in normal local linking and running of package this error not come but the error came when installed via npx
+// to fix this error make sure that filenames having underscores are within the same directory and within one directory only 
+// to fix remove underscores before filenames in utils directory and add that underscore in the root directory
