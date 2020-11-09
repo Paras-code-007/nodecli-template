@@ -16,5 +16,8 @@
         "email": "{{authorEmail}}",
         "url": "{{authorUrl}}"
     },
-    "license": "{{license}}"
+    "license": "{{license}}",
+    "scripts": {
+        "format": "prettier --write \"./**/*.{js,json} \""
+    }
 }   

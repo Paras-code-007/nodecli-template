@@ -34,11 +34,14 @@ module.exports= async ()=>{
         process.chdir(outDirPath)
         await execa(`npm`, ['dedupe'])
         spinner.succeed(`${g('npm dedupe')} ran succesfully\n`)
+
         spinner.start(`${y('npx conduct')} running...`)
         await execa('npx', ['conduct'])
         spinner.succeed(`${g('npx conduct')} ran succesfully: ${g('Added')} code-of-conduct.md\n`)
+
         // await execa('npx', ['license','-n',vars.authorName,'-e',vars.authorEmail, vars.license])
         // process.chdir(path.join(process.cwd(), '../'))
+
         const packages= [
             'meow',
             'chalk',
@@ -50,6 +53,8 @@ module.exports= async ()=>{
         spinner.start(`${y('Dependencies')} installing...\n\n ${d('It may take a moment')}`)
         // await execa('npm', ['install', ...packages, '--save'])
         spinner.succeed(`${g('Dependencies')} installed!!`)
+
+        await execa('npm', ['install', 'prettier', '-D'])
     })
     !outDir && console.log('You forgot to Enter the cli name which is most cumpolsary for this cli to work')
 
