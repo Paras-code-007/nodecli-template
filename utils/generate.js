@@ -35,7 +35,7 @@ module.exports= async ()=>{
         await execa(`npm`, ['dedupe'])
         spinner.succeed(`${g('npm dedupe')} ran succesfully\n`)
         spinner.start(`${y('npx conduct')} running...`)
-        // await execa('npx', ['conduct'])
+        await execa('npx', ['conduct'])
         spinner.succeed(`${g('npx conduct')} ran succesfully: ${g('Added')} code-of-conduct.md\n`)
         
         spinner.start(`${y(`npx license ${vars.license}`)} running...`)
@@ -52,7 +52,7 @@ module.exports= async ()=>{
             'unhandle-error'
         ]
         spinner.start(`${y('Dependencies')} installing...\n\n ${d('It may take a moment')}`)
-        // await execa('npm', ['install', ...packages, '--save'])
+        await execa('npm', ['install', ...packages, '--save'])
         spinner.succeed(`${g('Dependencies')} installed!!`)
     })
     !outDir && console.log('You forgot to Enter the cli name which is most cumpolsary for this cli to work')
