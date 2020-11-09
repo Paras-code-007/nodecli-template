@@ -11,10 +11,18 @@
         "index.js",
         "utils"
     ],
+    "keywords": [
+        "{{name}}",
+        "{{authorName}}"
+    ],
     "author": {
         "name": "{{authorName}}",
         "email": "{{authorEmail}}",
         "url": "{{authorUrl}}"
     },
-    "license": "{{license}}"
+    "license": "{{license}}",
+    "scripts": {
+        "test": "node test.js && echo \"Error: no test specified\" && exit 1",
+        "format": "prettier --write \"./**/*.{js,json}\""
+    }
 }   

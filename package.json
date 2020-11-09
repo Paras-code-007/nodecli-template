@@ -37,6 +37,7 @@
     "cli-welcome": "^2.2.2",
     "clialerting": "^1.0.1",
     "copy-template-dir": "^1.4.0",
+    "data-store": "^4.0.3",
     "enquirer": "^2.3.6",
     "execa": "^4.1.0",
     "meow": "^8.0.0",

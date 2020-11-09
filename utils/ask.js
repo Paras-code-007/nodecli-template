@@ -1,8 +1,10 @@
 const fs= require('fs')
+const path= require('path')
 const { Input }= require('enquirer')
 const to= require('await-to-js').default
 const handleError= require('cli-display-error')
 const {magenta}= require('chalk')
+const {Store}= require('data-store')
 
 module.exports= async ({message, hint, initial, name})=>{
     
@@ -14,6 +16,10 @@ module.exports= async ({message, hint, initial, name})=>{
         message,
         hint,
         initial,
+        history: {
+            autosave: true,
+            store: new Store({path: path.join(__dirname, `./../.history/${name}.json`)})  
+        },
         validate(value,state){ //which is the value enetered by user
             if(state && state.name === 'name'){
                 if(fs.existsSync(value)){
