@@ -5,7 +5,10 @@ const chalk = require('chalk')
 const helptext= `
 Usage
 ${green('npx {{name}}')} ${cyan('[--options]')} ${yellow('<input>')}
-${green('npx {{command}}')} ${cyan('[--options]')} ${yellow('<input>')}
+
+if installed globally using \`npm install -g {{name}}\`
+${green('{{name}}')} ${cyan('[--options]')} ${yellow('<input>')}
+${green('{{command}}')} ${cyan('[--options]')} ${yellow('<input>')}
 
 Flags/Options + alias                          ${chalk.dim('Defaults')}
 ${cyan('--debug')},${cyan(' -d')}       : to debug the cli             ${chalk.dim('false')}

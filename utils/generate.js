@@ -5,6 +5,8 @@ const alert= require('clialerting')
 const questions= require('./questions')
 const execa= require('execa')
 const ora= require('ora')
+const handleError= require('cli-display-error')
+const to= require('await-to-js').default
 
 const spinner= ora({text: ''})
 
@@ -29,14 +31,23 @@ module.exports= async ()=>{
 
         spinner.start(`${y('npm dedupe')} running...`)
         process.chdir(outDirPath)
-        await execa(`npm`, ['dedupe'])
+        let [error,res]= await to(execa(`npm`, ['dedupe']))
+        handleError('dedupe failed!!',error)
         spinner.succeed(`${g('npm dedupe')} ran succesfully\n`)
+        
         spinner.start(`${y('npx conduct')} running...`)
-        await execa('npx', ['conduct'])
+        // try {
+        //     await execa('npx', ['conduct'])
+        // } catch (err) {
+        //     alert({type: 'error', msg: 'npx conduct failed!!'})
+        // }
+        [error,res]= await to(execa('npx', ['conduct']))
+        handleError('npx conduct failed!!',error)
         spinner.succeed(`${g('npx conduct')} ran succesfully: ${g('Added')} code-of-conduct.md\n`)
         
         spinner.start(`${y(`npx license ${vars.license}`)} running...`)
-        await execa('npx', ['license',vars.license,'-n',vars.authorName.split(" ").join(""),'-e',vars.authorEmail])
+        [error,res]= await to(execa('npx', ['license',vars.license,'-n',vars.authorName.split(" ").join(""),'-e',vars.authorEmail]))
+        handleError('npx license failed to ran!!',error)
         spinner.succeed(`${g(`npx license ${vars.license}`)} ran succesfully: ${g('Added')} LICENSE\n`)
 
         const packages= [
@@ -48,8 +59,10 @@ module.exports= async ()=>{
             'unhandle-error'
         ]
         spinner.start(`${y('Dependencies')} installing...\n\n ${d('It may take a moment')}`)
-        await execa('npm', ['install', ...packages, '--save'])
+        [error,res]=await to(execa('npm', ['install', ...packages, '--save']))
+        handleError('dependencies failed to install!!',error)
         spinner.succeed(`${g('Dependencies')} installed!!`)
+
     })
     !outDir && console.log('You forgot to Enter the cli name which is most cumpolsary for this cli to work')
     return vars

@@ -19,6 +19,7 @@ module.exports= async ({name, message, hint})=>{
         process.exit(0)
     })
     .run())
+    handleError('Error: Invalid Choice!!',err)
 
     return response
 }
