@@ -4,6 +4,7 @@ const { Input }= require('enquirer')
 const to= require('await-to-js').default
 const {magenta}= require('chalk')
 const {Store}= require('data-store')
+const handleError= require('cli-display-error')
 
 module.exports= async ({message, hint, initial, name})=>{
 
@@ -40,6 +41,7 @@ module.exports= async ({message, hint, initial, name})=>{
         process.exit(0)
     } ) //exit with error code 0
     .run())  //input function will create a run property inside the object made by new and when run is called it returns a promise which on resolve passes the arguement passed by the user or userinput
+    handleError('Error: Invalid Entry',err)
 
     return response
 }

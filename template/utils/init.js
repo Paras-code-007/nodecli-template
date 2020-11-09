@@ -2,6 +2,7 @@ const welcome= require('cli-welcome')
 const checkNode= require('node-vercheck')
 const unhandled= require('unhandle-error')
 const pkgJSON= require('./../package.json')
+const {dim: d}= require('chalk')
 
 module.exports= (flags)=>{
     process.on('SIGINT',function () {
@@ -25,7 +26,7 @@ module.exports= (flags)=>{
     })
 
     flags.minimal && flags.clear && process.stdout.write(process.platform==='win32'? '\x1B[2J\x1B[0f' : '\x1B[2J\x1B[3J\x1B[H' )
-    flags.minimal && console.log(`\nBy {{authorName}}\n`)
+    flags.minimal && console.log(`\n${d('By {{authorName}}')}\n`)
 
     checkNode('10')
    

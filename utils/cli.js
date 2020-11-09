@@ -4,8 +4,11 @@ const chalk = require('chalk')
 
 const helptext= `
 Usage
-${green('npx cli-up/cliup')} ${cyan('[--options]')} ${yellow('<input>')}
-${green('npx clistart')} ${cyan('[--options]')} ${yellow('<input>')}
+${green('npx cli-up')} ${cyan('[--options]')} ${yellow('<input>')}
+
+if installed globally using \`npm install -g cli-up\`
+${green('clistart')} ${cyan('[--options]')} ${yellow('<input>')}
+${green('cli-up/cliup')} ${cyan('[--options]')} ${yellow('<input>')}
 
 Flags/Options + alias                          ${chalk.dim('Defaults')}
 ${cyan('--debug')},${cyan(' -d')}       : to debug the cli             ${chalk.dim('false')}

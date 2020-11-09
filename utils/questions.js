@@ -17,6 +17,7 @@ module.exports= async()=>{
     const authorName= await ask({name: 'authorName',message: 'Author name? '})
     const authorEmail= await ask({name: 'authorEmail',message: 'Author email? ', hint: '(Optional)'})
     const authorUrl= await ask({name: 'authorUrl',message: 'Author url?', hint: '(Optional)'})
+    //error handling not reqd here, cant find when error comes here after user enters the feild
     
     const vars= {
         name,
