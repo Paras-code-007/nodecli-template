@@ -1,4 +1,4 @@
-# {{name} Todos
+# {{name}} Todos
 
 - Point1
 - Point2
