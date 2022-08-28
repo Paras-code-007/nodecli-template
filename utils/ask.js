@@ -1,3 +1,4 @@
+const os = require('os');
 const fs= require('fs')
 const path= require('path')
 const { Input }= require('enquirer')
@@ -13,7 +14,8 @@ module.exports= async ({message, hint, initial, name})=>{
     if(!initial && name !== 'name' && name !== 'command' && name !== 'description'){
         history= {
             autosave: true,
-            store: new Store({path: path.join(__dirname, `./../.history/${name}.json`)})  
+            // store: new Store({path: path.join(__dirname, `./../.history/${name}.json`)})
+            store: new Store({path: path.join(os.homedir(), `./cliup/.history/${name}.json`)})
         }
     }
     const [err,response]= await to(new Input({
@@ -24,8 +26,13 @@ module.exports= async ({message, hint, initial, name})=>{
         history,
         validate(value,state){ //which is the value enetered by user
             if(state && state.name === 'name'){
+                // Regex for Kebab-Case
+                if(state.name.match('^([a-z][a-z0-9]*)(-[a-z0-9]+)*$')==null){
+                    console.log("hello")
+                    return "name should be in kebab-case according to npm guidelines"
+                }
                 if(fs.existsSync(value)){
-                    return `Directory already exists: ./${value}`  //give error 
+                    return `Directory already exists: ./${value}`  //give error
                 }else{
                     return true  //validated and move fwd
                 }
